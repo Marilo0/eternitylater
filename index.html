@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Message</title>
+    <style>
+        /* Centering the text */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        /* Styling for the red color */
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <a href="#" id="privateMessageLink" class="red">Marialena demands you to Click here for a Private Message</a>
+    
+    <script>
+        document.getElementById("privateMessageLink").addEventListener("click", function(event){
+            event.preventDefault(); // Prevent the default action of the link
+            
+            // Display first message after clicking
+            var firstMessage = document.getElementById("privateMessageLink");
+            firstMessage.textContent = "ATTENTION.MESSAGE FOLLOWS.[do NOT click again (or message will be fucked up), JUST WAIT 2 FCKNG SEC";
+            
+            // Delay the appearance of the second message
+            setTimeout(function() {
+                var secondMessage = document.createElement("p");
+                var messageText = "If you have access to this, letters appear in your screen following one another...almost like something very important is being unscripted.......uhm.No.....Perhaps you just lost some seconds of your life watching how Marialena lost her Saturdays'hours. . BYE . .";
+                var index = 0;
+
+                // Function to display message letter by letter
+                function displayNextLetter() {
+                    if (index < messageText.length) {
+                        secondMessage.textContent += messageText[index];
+                        index++;
+                        setTimeout(displayNextLetter, 100); // Adjust the delay between letters here (100ms in this case)
+                    }
+                }
+
+                displayNextLetter(); // Start displaying the message letter by letter
+                document.body.appendChild(secondMessage);
+                
+                // Remove the first message element
+                firstMessage.remove();
+            }, 6000); // 6000 milliseconds = 6 seconds
+        });
+    </script>
+</body>
+</html>
